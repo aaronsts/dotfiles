@@ -1,0 +1,59 @@
+{
+  // Editor
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": false,
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.guides.highlightActiveIndentation": "always",
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": true,
+  "editor.cursorBlinking": "phase",
+  "editor.lineHeight": 1.8,
+  "editor.linkedEditing": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  // Theming
+  "workbench.tree.indent": 16,
+  "workbench.editor.labelFormat": "short",
+  "workbench.iconTheme": "bearded-icons",
+  "workbench.colorTheme": "Neutron Palette Bit Darker",
+
+  // Misc
+  "redhat.telemetry.enabled": false,
+  "git.confirmSync": false,
+  "color-highlight.matchHslWithNoFunction": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": true,
+  "explorer.autoReveal": true,
+  "extensions.ignoreRecommendations": true,
+
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    "class:\\s*?[\"'`]([^\"'`]*).*?,"
+  ],
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "vue"
+  ],
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}
