@@ -15,9 +15,14 @@ osxprefs() {
 	defaults write com.apple.dock autohide -bool true
 	print_success "Automatically hide and show the Dock."
 
+	# Disable delay for dock
+	defaults write com.apple.dock autohide-delay -float 0
+  print_success "Disable the hide Dock delay"
+
 	# Display full path in Finder title window
 	defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 	print_success "Finder shows full path in title."
+
 
 	# Save screenshots in ~/Pictures/Screenshots folder
 	mkdir $HOME/Pictures/Screenshots

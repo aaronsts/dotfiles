@@ -1,0 +1,9 @@
+[user]
+	email = aaron.staes@gmail.com
+	name = Aaron
+[init]
+	defaultBranch = main
+
+[alias]
+# Undo
+	undo = reset HEAD~1 --mixed

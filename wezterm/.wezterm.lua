@@ -29,17 +29,5 @@ config.keys = {
   },
 }
 
--- config.colors = {
--- 	foreground = "#ecffff",
--- 	background = "#1a1a1a",
--- 	cursor_bg = "#93d479",
--- 	cursor_border = "#93d479",
--- 	cursor_fg = "#212121",
--- 	selection_bg = "#4a4a4a",
--- 	selection_fg = "#ecffff",
--- 	ansi = { "#214969", "#f07178", "#93d479", "#ffcb6b", "#78d9ff", "#a277ff", "#80cbc4", "#80cbc4" },
--- 	brights = { "#214969", "#f07178", "#93d479", "#ffcb6b", "#A277FF", "#a277ff", "#80cbc4", "#80cbc4" },
--- }
-
 -- and finally, return the configuration to wezterm
 return config
