@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 config.color_scheme = 'Neutron (Gogh)'
-config.font = wezterm.font("MesloLGS Nerd Font Mono")
+config.font = wezterm.font 'Fira Code'
 config.font_size = 16
 
 config.enable_tab_bar = false

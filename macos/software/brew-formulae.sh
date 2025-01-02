@@ -18,6 +18,7 @@ brew_packages() {
 		brew_install "tree"
 		brew_install "gh"
 		brew_install "oh-my-posh"
+		brew_install "antidote"
 
 		# Developer
 		print_in_blue "Developer packages"

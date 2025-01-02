@@ -1,2 +1,8 @@
+#!/usr/bin/env zsh
+#
+# .zsh_plugins.txt - antidote plugins file
+#
+
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-syntax-highlighting kind:defer
+mattmc3/ez-compinit
