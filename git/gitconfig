@@ -1,0 +1,17 @@
+[user]
+	name = Aaron
+	# For a PUBLIC repo, consider your GitHub noreply address instead of a
+	# personal email: <id>+<user>@users.noreply.github.com (Settings > Emails).
+	email = aaron.staes@gmail.com
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true
+
+[alias]
+	undo = reset HEAD~1 --mixed

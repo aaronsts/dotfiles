@@ -1,0 +1,48 @@
+# ~/.zshrc  (symlinked from dotfiles/zsh/zshrc)
+
+# Homebrew on PATH (Apple Silicon or Intel)
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+export EDITOR="code -w"
+
+# ── History ──────────────────────────────────────────────────────
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt share_history          # share history live across open tabs
+setopt hist_ignore_all_dups   # drop older duplicates of a command
+setopt hist_ignore_space      # skip commands prefixed with a space
+setopt hist_reduce_blanks     # tidy up whitespace
+setopt inc_append_history     # write commands as they run, not on exit
+setopt extended_history       # record timestamps
+
+# ── Navigation ───────────────────────────────────────────────────
+setopt auto_cd                # type a dir name to cd into it
+setopt auto_pushd             # cd maintains a dir stack (cd -<TAB>)
+setopt pushd_ignore_dups
+
+# ── Plugins via antidote (edit the list in ~/.zsh_plugins.txt) ────
+source "$(brew --prefix)/opt/antidote/share/antidote/antidote.zsh"
+antidote load
+zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
+
+# ── fnm — Node version manager (auto-switches on cd) ─────────────
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# ── zoxide — smarter cd (jump with `z <partial-dir>`) ────────────
+eval "$(zoxide init zsh)"
+
+# ── Aliases ──────────────────────────────────────────────────────
+[ -f "$HOME/.aliases.zsh" ] && source "$HOME/.aliases.zsh"
+
+# ── Prompt (oh-my-posh) ──────────────────────────────────────────
+eval "$(oh-my-posh init zsh --config "$HOME/.config/ohmyposh/prompt.omp.yaml")"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# Pi
+export PATH="/Users/rnsts/.local/share/fnm/node-versions/v24.18.0/installation/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

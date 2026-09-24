@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Backups the installer makes when it replaces a real file
+*.pre-dotfiles
+
+# zsh compdump / local overrides
+.zcompdump*
+*.local
+
+# Python bytecode cache
+__pycache__/
+*.pyc
