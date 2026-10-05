@@ -8,5 +8,6 @@
     "/Users/rnsts/code/personal/pi-subagents"
   ],
   "enableInstallTelemetry": false,
-  "tuiMode": "regular"
+  "tuiMode": "regular",
+  "defaultThinkingLevel": "high"
 }

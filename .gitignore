@@ -11,3 +11,7 @@
 # Python bytecode cache
 __pycache__/
 *.pyc
+
+# Secrets never belong in this public repo
+.env
+*.crt

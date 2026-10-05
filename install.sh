@@ -42,7 +42,7 @@ brew bundle --file="$DOTFILES/Brewfile"
 # Symlink config
 # ─────────────────────────────────────────────────────────────────────────────
 echo "▶ Linking config…"
-mkdir -p "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.pi/agent"
+mkdir -p "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.pi/agent"
 
 link() {
   local src="$1" dest="$2"
@@ -62,6 +62,8 @@ link "$DOTFILES/ghostty/config"       "$HOME/.config/ghostty/config"
 link "$DOTFILES/ohmyposh/prompt.omp.yaml" "$HOME/.config/ohmyposh/prompt.omp.yaml"
 link "$DOTFILES/pi/settings.json"       "$HOME/.pi/agent/settings.json"
 link "$DOTFILES/pi/extensions"          "$HOME/.pi/agent/extensions"
+link "$DOTFILES/monsterbrew/dev.sh"     "$HOME/.config/monsterbrew/dev.sh"
+link "$DOTFILES/monsterbrew/prod.sh"    "$HOME/.config/monsterbrew/prod.sh"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # macOS preferences

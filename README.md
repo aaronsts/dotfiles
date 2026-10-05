@@ -51,6 +51,9 @@ dotfiles/
 ├── pi/
 │   ├── settings.json     -> ~/.pi/agent/settings.json
 │   └── extensions/       -> ~/.pi/agent/extensions/
+├── monsterbrew/          # database scripts; .env and do-ca.crt stay local
+│   ├── dev.sh            -> ~/.config/monsterbrew/dev.sh
+│   └── prod.sh           -> ~/.config/monsterbrew/prod.sh
 ├── file-mover/           # launchd agent, watches ~/Downloads
 │   ├── file-mover.sh
 │   ├── process_statement.py
