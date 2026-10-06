@@ -124,6 +124,12 @@ can't be scripted** — create it once per Mac:
 
 - Set your git identity in `git/gitconfig`. For a public repo, use your GitHub
   `@users.noreply.github.com` address to avoid exposing a personal email.
+- Machine-specific git settings, like a work email for one directory, go in
+  `~/.config/git/local` (included last, not tracked). Recreate it on a new Mac:
+  ```
+  [includeIf "gitdir:~/code/<client>/"]
+  	path = work          # ~/.config/git/work holds [user] email = …
+  ```
 - Casks with their own updaters (Firefox, VS Code, Ghostty…) are skipped by a
   plain `brew upgrade`; use `brew upgrade --greedy` (aliased to `brewupg`) to
   include them.

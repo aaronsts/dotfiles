@@ -14,3 +14,8 @@
 
 [alias]
 	undo = reset HEAD~1 --mixed
+
+# Machine-specific overrides (e.g. a work email per directory); not tracked here.
+# Kept last so it wins. Git skips it if the file doesn't exist.
+[include]
+	path = ~/.config/git/local
