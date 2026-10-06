@@ -57,6 +57,9 @@ dotfiles/
 │   └── config.toml       -> ~/.config/mise/config.toml
 ├── ssh/                  # host config only; keys stay in ~/.ssh
 │   └── config            -> ~/.ssh/config
+├── vscode/               # extensions are vscode "…" lines in the Brewfile
+│   ├── settings.json     -> ~/Library/Application Support/Code/User/settings.json
+│   └── snippets/         -> ~/Library/Application Support/Code/User/snippets/
 ├── monsterbrew/          # database scripts; .env and do-ca.crt stay local
 │   ├── dev.sh            -> ~/.config/monsterbrew/dev.sh
 │   └── prod.sh           -> ~/.config/monsterbrew/prod.sh
@@ -130,6 +133,8 @@ can't be scripted** — create it once per Mac:
   [includeIf "gitdir:~/code/<client>/"]
   	path = work          # ~/.config/git/work holds [user] email = …
   ```
+- Installed a VS Code extension? `brew bundle dump --vscode --file=- | grep ^vscode`
+  prints the current list to paste into the Brewfile.
 - Casks with their own updaters (Firefox, VS Code, Ghostty…) are skipped by a
   plain `brew upgrade`; use `brew upgrade --greedy` (aliased to `brewupg`) to
   include them.

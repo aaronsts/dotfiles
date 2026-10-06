@@ -28,3 +28,21 @@ cask "affinity"                       # design / photo / layout suite (v3)
 cask "spotify"                        # music streaming
 
 cask "font-jetbrains-mono-nerd-font"  # nerd font for terminal
+
+# ── VS Code extensions ───────────────────────────────────────────────────────
+vscode "alefragnani.project-manager"
+vscode "beardedbear.beardedicons"
+vscode "bradlc.vscode-tailwindcss"
+vscode "cardinal90.multi-cursor-case-preserve"
+vscode "dbaeumer.vscode-eslint"
+vscode "eamodio.gitlens"
+vscode "editorconfig.editorconfig"
+vscode "esbenp.prettier-vscode"
+vscode "evanlong.cursor-themes"
+vscode "lokalise.i18n-ally"
+vscode "ms-playwright.playwright"
+vscode "orta.vscode-jest"
+vscode "ritwickdey.liveserver"
+vscode "tamasfe.even-better-toml"
+vscode "vitest.explorer"
+vscode "yzhang.markdown-all-in-one"

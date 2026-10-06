@@ -43,7 +43,8 @@ brew bundle --file="$DOTFILES/Brewfile" \
 # Symlink config
 # ─────────────────────────────────────────────────────────────────────────────
 echo "▶ Linking config…"
-mkdir -p "$HOME/.config/git" "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.config/mise" "$HOME/.pi/agent" "$HOME/.ssh"
+VSCODE_USER="$HOME/Library/Application Support/Code/User"
+mkdir -p "$HOME/.config/git" "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.config/mise" "$HOME/.pi/agent" "$HOME/.ssh" "$VSCODE_USER"
 chmod 700 "$HOME/.ssh"
 
 link() {
@@ -69,6 +70,8 @@ link "$DOTFILES/monsterbrew/dev.sh"     "$HOME/.config/monsterbrew/dev.sh"
 link "$DOTFILES/monsterbrew/prod.sh"    "$HOME/.config/monsterbrew/prod.sh"
 link "$DOTFILES/mise/config.toml"       "$HOME/.config/mise/config.toml"
 link "$DOTFILES/ssh/config"             "$HOME/.ssh/config"
+link "$DOTFILES/vscode/settings.json"   "$VSCODE_USER/settings.json"
+link "$DOTFILES/vscode/snippets"        "$VSCODE_USER/snippets"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Runtimes (node + global npm tools from mise/config.toml)

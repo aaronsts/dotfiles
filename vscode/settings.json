@@ -1,0 +1,38 @@
+{
+  "workbench.iconTheme": "bearded-icons",
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "claudeCode.preferredLocation": "sidebar",
+  "window.nativeTabs": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+
+  "editor.guides.bracketPairs": "active",
+  "editor.minimap.enabled": false,
+  "diffEditor.maxComputationTime": 0,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "workbench.browser.enableChatTools": false,
+  "workbench.settings.showAISearchToggle": false,
+  "chat.disableAIFeatures": true,
+  "mdb.mcp.server": "autoStartDisabled",
+  "workbench.browser.searchEngine": "none",
+  "workbench.browser.openLocalhostLinks": false,
+  "editor.definitionLinkOpensInPeek": true,
+  "workbench.colorTheme": "Cursor Dark",
+  "gitlens.gitCommands.skipConfirmations": [
+    "fetch:command",
+    "stash-push:command",
+    "pull:command"
+  ],
+  "diffEditor.ignoreTrimWhitespace": false
+}
