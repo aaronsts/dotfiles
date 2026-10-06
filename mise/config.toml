@@ -3,7 +3,6 @@
 
 [tools]
 node = "24"
-"npm:@earendil-works/pi-coding-agent" = "latest"
 
 [settings]
 # Read .nvmrc / .node-version like fnm did (off by default in mise)

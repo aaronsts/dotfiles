@@ -34,5 +34,6 @@
     "stash-push:command",
     "pull:command"
   ],
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDelete": false
 }
