@@ -55,6 +55,8 @@ dotfiles/
 │   └── extensions/       -> ~/.pi/agent/extensions/
 ├── mise/
 │   └── config.toml       -> ~/.config/mise/config.toml
+├── ssh/                  # host config only; keys stay in ~/.ssh
+│   └── config            -> ~/.ssh/config
 ├── monsterbrew/          # database scripts; .env and do-ca.crt stay local
 │   ├── dev.sh            -> ~/.config/monsterbrew/dev.sh
 │   └── prod.sh           -> ~/.config/monsterbrew/prod.sh

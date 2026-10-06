@@ -43,7 +43,8 @@ brew bundle --file="$DOTFILES/Brewfile" \
 # Symlink config
 # ─────────────────────────────────────────────────────────────────────────────
 echo "▶ Linking config…"
-mkdir -p "$HOME/.config/git" "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.config/mise" "$HOME/.pi/agent"
+mkdir -p "$HOME/.config/git" "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.config/mise" "$HOME/.pi/agent" "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
 
 link() {
   local src="$1" dest="$2"
@@ -67,6 +68,7 @@ link "$DOTFILES/pi/extensions"          "$HOME/.pi/agent/extensions"
 link "$DOTFILES/monsterbrew/dev.sh"     "$HOME/.config/monsterbrew/dev.sh"
 link "$DOTFILES/monsterbrew/prod.sh"    "$HOME/.config/monsterbrew/prod.sh"
 link "$DOTFILES/mise/config.toml"       "$HOME/.config/mise/config.toml"
+link "$DOTFILES/ssh/config"             "$HOME/.ssh/config"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Runtimes (node + global npm tools from mise/config.toml)
