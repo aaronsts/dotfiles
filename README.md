@@ -26,9 +26,10 @@ Re-running `./install.sh` any time is safe.
 1. Install Homebrew (if missing)
 2. `brew bundle` everything in the [`Brewfile`](./Brewfile)
 3. Symlink the config files below into `~`
-4. Apply macOS preferences ([`macos.sh`](./macos.sh))
-5. Install the file-mover launchd agent ([`file-mover/`](./file-mover))
-6. Make Homebrew's zsh the login shell
+4. `mise install` Node and global npm tools ([`mise/config.toml`](./mise/config.toml))
+5. Apply macOS preferences ([`macos.sh`](./macos.sh)) and reset the Dock ([`dock.sh`](./dock.sh))
+6. Install the file-mover shortcut ([`file-mover/`](./file-mover)) — plus one manual step, see below
+7. Make Homebrew's zsh the login shell
 
 ## Layout
 
@@ -43,7 +44,8 @@ dotfiles/
 │   ├── zsh_plugins.txt   -> ~/.zsh_plugins.txt   (antidote plugin list)
 │   └── aliases.zsh       -> ~/.aliases.zsh
 ├── git/
-│   └── gitconfig         -> ~/.gitconfig
+│   ├── gitconfig         -> ~/.gitconfig
+│   └── ignore            -> ~/.config/git/ignore   (global gitignore)
 ├── ghostty/
 │   └── config            -> ~/.config/ghostty/config
 ├── ohmyposh/
@@ -51,13 +53,16 @@ dotfiles/
 ├── pi/
 │   ├── settings.json     -> ~/.pi/agent/settings.json
 │   └── extensions/       -> ~/.pi/agent/extensions/
+├── mise/
+│   └── config.toml       -> ~/.config/mise/config.toml
 ├── monsterbrew/          # database scripts; .env and do-ca.crt stay local
 │   ├── dev.sh            -> ~/.config/monsterbrew/dev.sh
 │   └── prod.sh           -> ~/.config/monsterbrew/prod.sh
-├── file-mover/           # launchd agent, watches ~/Downloads
-│   ├── file-mover.sh
+├── file-mover/           # Shortcuts automation, files statements from ~/Downloads
+│   ├── file-mover.sh     -> ~/.config/file-mover/file-mover.sh
 │   ├── process_statement.py
-│   └── com.rnsts.filemover.plist.template
+│   ├── file-mover.shortcut.xml
+│   └── install.sh
 └── archive/              # retired configs kept for reference (e.g. wezterm)
 ```
 
@@ -76,8 +81,9 @@ select its child model.
 - **zsh** with [antidote](https://github.com/mattmc3/antidote) for plugins
 - **[oh-my-posh](https://ohmyposh.dev/)** prompt — two-line, terminal-palette
   colors, clock, git, and a transient prompt (`prompt.omp.yaml`)
-- **[fnm](https://github.com/Schniz/fnm)** for Node (auto-switches on `cd`; run
-  `fnm install --lts` once to get a runtime)
+- **[mise](https://mise.jdx.dev/)** for Node and global npm tools like Pi
+  (`mise/config.toml`; auto-switches on `cd` and reads `.nvmrc`/`.node-version`).
+  `mise use -g <tool>` adds a tool to that file, so it's tracked here
 - **[zoxide](https://github.com/ajeetdsouza/zoxide)** — `z <partial>` to jump
 - Aliases in `zsh/aliases.zsh`; run `alias` to list them
 
@@ -88,16 +94,29 @@ theme — browse others with `ghostty +list-themes`.
 
 ## File-mover automation
 
-A launchd agent watches `~/Downloads` for bank-statement exports (filenames
-containing `Afschriften` or `Statements`), strips a few columns, renames them,
-and files them under `~/Documents/finance/statements`. It runs continuously and
-restarts on login. `install.sh` renders the plist from
-`file-mover/com.rnsts.filemover.plist.template` with this machine's paths and
-loads it via `launchctl`.
+A Shortcuts folder automation runs `file-mover.sh` whenever a file lands in
+`~/Downloads`. The script picks up bank-statement exports (filenames containing
+`Afschriften` or `Statements`), strips a few columns, renames them, and files
+them under `~/Documents/finance/statements`. Every run scans the whole folder,
+so a missed trigger is caught by the next one.
 
+It runs through Shortcuts so macOS grants access to just Downloads and
+Documents to that one shortcut. A launchd agent would need Full Disk Access
+for `/bin/bash`, which every bash-based background job would then get.
+
+`file-mover/install.sh` links the script to `~/.config/file-mover/`, signs
+`file-mover.shortcut.xml`, and opens it for import. **The automation itself
+can't be scripted** — create it once per Mac:
+
+1. Shortcuts → Settings → Advanced → turn on **Allow Running Scripts**
+2. Automations → **+** → **Folder** → Downloads, tick only **Added** →
+   **Run Immediately** → Next → pick **File Mover**
+3. If macOS asks whether Shortcuts may access Downloads, click **Allow**
+
+- Check state and recent log: `file-mover/install.sh --status`
 - View logs: `tail -f ~/.config/file-mover/file-mover.log`
-- Stop: `launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.rnsts.filemover.plist`
-- Start: `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.rnsts.filemover.plist`
+- Pause: toggle the automation off in Shortcuts → Automations
+- Tests: `node --test tests/file-mover.test.cjs`
 
 ## Notes
 

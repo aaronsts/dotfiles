@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #
 # macOS preferences. Safe to re-run.
-
-set -e
+# No `set -e`: settings are independent, so one failure shouldn't skip the rest.
 
 echo "▶ Applying macOS preferences…"
 
@@ -12,8 +11,6 @@ HOST_NAME="A-Wizards-Laptop"
 sudo scutil --set ComputerName  "$COMPUTER_NAME"
 sudo scutil --set HostName      "$HOST_NAME"
 sudo scutil --set LocalHostName "$HOST_NAME"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server \
-  NetBIOSName -string "$HOST_NAME"
 
 # Appearance: dark mode, and prefer tabs when opening documents
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
@@ -30,19 +27,18 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock show-recents -bool "false"
 
-# Trackpad/mouse: disable "natural" scroll direction
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+# Trackpad/mouse: swipe down scrolls down ("natural" scrolling off)
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-# Keyboard: fast key repeat
+# Keyboard: fast key repeat (15 is the shortest delay System Settings allows)
 defaults write -g KeyRepeat -int 2
-defaults write -g InitialKeyRepeat -int 12
+defaults write -g InitialKeyRepeat -int 15
 
-# Security: require password immediately after sleep / screensaver
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# Software updates: check daily
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+# Security: require password immediately after sleep / screensaver.
+# The old com.apple.screensaver keys are ignored since High Sierra.
+echo "  Setting screen lock to immediate (asks for your login password)…"
+sysadminctl -screenLock immediate -password - \
+  || echo "  ⚠ Screen lock not set — do it in System Settings › Lock Screen"
 
 # Timezone
 sudo systemsetup -settimezone "Europe/Brussels" >/dev/null

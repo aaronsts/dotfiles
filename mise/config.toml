@@ -1,0 +1,12 @@
+# ~/.config/mise/config.toml  (symlinked from dotfiles/mise/config.toml)
+# `mise use -g <tool>` edits this file, so new global tools land in the repo.
+
+[tools]
+node = "24"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+
+[settings]
+# Read .nvmrc / .node-version like fnm did (off by default in mise)
+idiomatic_version_file_enable_tools = ["node"]
+# Keeps the pnpm/yarn shims
+node.corepack = true

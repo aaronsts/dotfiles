@@ -3,8 +3,7 @@
 # Reset the Dock to a curated set of apps. Edit the APPS list to taste and
 # re-run — it's idempotent (wipes the Dock, then adds these in order).
 # Run as your normal user (no sudo — dockutil edits *your* Dock).
-
-set -e
+# No `set -e`: one app failing to add shouldn't skip the rest.
 
 if ! command -v dockutil >/dev/null 2>&1; then
   echo "dockutil not found — add it to the Brewfile and run brew bundle."
@@ -16,9 +15,9 @@ echo "▶ Resetting the Dock…"
 # Apps to pin, left-to-right. Add/remove lines freely.
 APPS=(
   "/Applications/Ghostty.app"
-  "/Applications/Firefox.app"
+  "/Applications/Zen.app"
   "/Applications/Visual Studio Code.app"
-  "/Applications/Bitwarden.app"
+  "/Applications/Obsidian.app"
 )
 
 dockutil --remove all --no-restart

@@ -1,0 +1,8 @@
+# Global gitignore — applies to every repo on this machine.
+# git reads ~/.config/git/ignore automatically (no core.excludesFile needed).
+
+# macOS
+.DS_Store
+
+# Claude Code per-user settings
+**/.claude/settings.local.json

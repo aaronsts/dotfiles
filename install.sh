@@ -36,13 +36,14 @@ brew update
 # Packages
 # ─────────────────────────────────────────────────────────────────────────────
 echo "▶ Installing packages from Brewfile…"
-brew bundle --file="$DOTFILES/Brewfile"
+brew bundle --file="$DOTFILES/Brewfile" \
+  || echo "⚠ Some Brewfile packages failed — continuing (re-run brew bundle later)"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Symlink config
 # ─────────────────────────────────────────────────────────────────────────────
 echo "▶ Linking config…"
-mkdir -p "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.pi/agent"
+mkdir -p "$HOME/.config/git" "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.config/mise" "$HOME/.pi/agent"
 
 link() {
   local src="$1" dest="$2"
@@ -58,44 +59,36 @@ link "$DOTFILES/zsh/zshrc"            "$HOME/.zshrc"
 link "$DOTFILES/zsh/zsh_plugins.txt"  "$HOME/.zsh_plugins.txt"
 link "$DOTFILES/zsh/aliases.zsh"      "$HOME/.aliases.zsh"
 link "$DOTFILES/git/gitconfig"        "$HOME/.gitconfig"
+link "$DOTFILES/git/ignore"           "$HOME/.config/git/ignore"
 link "$DOTFILES/ghostty/config"       "$HOME/.config/ghostty/config"
 link "$DOTFILES/ohmyposh/prompt.omp.yaml" "$HOME/.config/ohmyposh/prompt.omp.yaml"
 link "$DOTFILES/pi/settings.json"       "$HOME/.pi/agent/settings.json"
 link "$DOTFILES/pi/extensions"          "$HOME/.pi/agent/extensions"
 link "$DOTFILES/monsterbrew/dev.sh"     "$HOME/.config/monsterbrew/dev.sh"
 link "$DOTFILES/monsterbrew/prod.sh"    "$HOME/.config/monsterbrew/prod.sh"
+link "$DOTFILES/mise/config.toml"       "$HOME/.config/mise/config.toml"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Runtimes (node + global npm tools from mise/config.toml)
+# ─────────────────────────────────────────────────────────────────────────────
+echo "▶ Installing mise tools…"
+mise install || echo "⚠ mise install had errors — continuing (re-run mise install later)"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # macOS preferences
 # ─────────────────────────────────────────────────────────────────────────────
-"$DOTFILES/macos.sh"
+"$DOTFILES/macos.sh" || echo "⚠ macos.sh had errors — continuing with the rest of the setup"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Dock
 # ─────────────────────────────────────────────────────────────────────────────
-"$DOTFILES/dock.sh"
+"$DOTFILES/dock.sh" || echo "⚠ dock.sh had errors — continuing with the rest of the setup"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# File-mover automation (launchd agent watching ~/Downloads)
+# File-mover automation (Shortcuts folder automation on ~/Downloads)
 # ─────────────────────────────────────────────────────────────────────────────
-echo "▶ Installing file-mover agent…"
-FM_DIR="$DOTFILES/file-mover"
-FM_PLIST="com.rnsts.filemover"
-FM_LOG_DIR="$HOME/.config/file-mover"
-LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
-
-chmod +x "$FM_DIR/file-mover.sh" "$FM_DIR/process_statement.py"
-mkdir -p "$FM_LOG_DIR" "$LAUNCH_AGENTS"
-
-# Render the plist from the template with this machine's paths.
-sed -e "s|__SCRIPT__|$FM_DIR/file-mover.sh|g" \
-    -e "s|__LOG_DIR__|$FM_LOG_DIR|g" \
-    "$FM_DIR/$FM_PLIST.plist.template" > "$LAUNCH_AGENTS/$FM_PLIST.plist"
-
-# Reload the agent (ignore errors if it wasn't running yet).
-launchctl bootout "gui/$(id -u)" "$LAUNCH_AGENTS/$FM_PLIST.plist" 2>/dev/null || true
-launchctl bootstrap "gui/$(id -u)" "$LAUNCH_AGENTS/$FM_PLIST.plist"
-echo "  file-mover watching ~/Downloads → ~/Documents/finance/statements"
+echo "▶ Installing file-mover…"
+"$DOTFILES/file-mover/install.sh" || echo "⚠ file-mover install had errors — continuing (re-run file-mover/install.sh later)"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Make brew's zsh the login shell
