@@ -31,6 +31,9 @@ alias gco='git checkout'
 alias gb='git branch'
 alias glog='git log --oneline --graph --decorate -20'
 
+# ── Node ─────────────────────────────────────────────────────────
+alias pn='pnpm'
+
 # ── Misc ─────────────────────────────────────────────────────────
 alias ip='curl -s ifconfig.me'              # public IP
 alias localip='ipconfig getifaddr en0'      # LAN IP
