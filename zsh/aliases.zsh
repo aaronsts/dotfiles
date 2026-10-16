@@ -35,6 +35,6 @@ alias glog='git log --oneline --graph --decorate -20'
 alias pn='pnpm'
 
 # ── Misc ─────────────────────────────────────────────────────────
-alias ip='curl -s ifconfig.me'              # public IP
+alias ip='curl -4 ifconfig.me'              # public IP
 alias localip='ipconfig getifaddr en0'      # LAN IP
 alias cleanup='find . -type f -name .DS_Store -delete'

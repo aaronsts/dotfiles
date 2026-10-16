@@ -53,6 +53,9 @@ dotfiles/
 ├── pi/
 │   ├── settings.json     -> ~/.pi/agent/settings.json
 │   └── extensions/       -> ~/.pi/agent/extensions/
+├── claude/               # each skill is linked on its own; the rest of ~/.claude stays local
+│   └── skills/
+│       └── test-triage/  -> ~/.claude/skills/test-triage/
 ├── mise/
 │   └── config.toml       -> ~/.config/mise/config.toml
 ├── ssh/                  # host config only; keys stay in ~/.ssh
