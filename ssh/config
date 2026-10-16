@@ -3,7 +3,7 @@ Host github.com
   UseKeychain yes
   IdentityFile ~/.ssh/id_ed25519
 
-Host bitbucket.org
+Host ssh.bitbucket.org bitbucket.org
   Hostname altssh.bitbucket.org
   Port 443
   AddKeysToAgent yes
