@@ -44,7 +44,8 @@ brew bundle --file="$DOTFILES/Brewfile" \
 # ─────────────────────────────────────────────────────────────────────────────
 echo "▶ Linking config…"
 VSCODE_USER="$HOME/Library/Application Support/Code/User"
-mkdir -p "$HOME/.config/git" "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.config/mise" "$HOME/.config/herdr" "$HOME/.pi/agent" "$HOME/.claude/skills" "$HOME/.ssh" "$VSCODE_USER"
+LAZYGIT_DIR="$HOME/Library/Application Support/lazygit"
+mkdir -p "$HOME/.config/git" "$HOME/.config/ghostty" "$HOME/.config/ohmyposh" "$HOME/.config/monsterbrew" "$HOME/.config/mise" "$HOME/.config/herdr" "$HOME/.pi/agent" "$HOME/.claude/skills" "$HOME/.ssh" "$VSCODE_USER" "$LAZYGIT_DIR"
 chmod 700 "$HOME/.ssh"
 
 link() {
@@ -62,6 +63,7 @@ link "$DOTFILES/zsh/zsh_plugins.txt"  "$HOME/.zsh_plugins.txt"
 link "$DOTFILES/zsh/aliases.zsh"      "$HOME/.aliases.zsh"
 link "$DOTFILES/git/gitconfig"        "$HOME/.gitconfig"
 link "$DOTFILES/git/ignore"           "$HOME/.config/git/ignore"
+link "$DOTFILES/lazygit/config.yml"   "$LAZYGIT_DIR/config.yml"
 link "$DOTFILES/ghostty/config"       "$HOME/.config/ghostty/config"
 link "$DOTFILES/ohmyposh/prompt.omp.yaml" "$HOME/.config/ohmyposh/prompt.omp.yaml"
 link "$DOTFILES/pi/settings.json"       "$HOME/.pi/agent/settings.json"

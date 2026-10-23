@@ -4,6 +4,8 @@
 brew "git"
 brew "zsh"
 brew "gh"          # GitHub CLI
+brew "lazygit"     # git TUI
+brew "git-delta"   # syntax-highlighted git diffs
 brew "antidote"    # zsh plugin manager
 brew "oh-my-posh"  # prompt
 brew "mise"        # runtime manager (node, global npm tools)
