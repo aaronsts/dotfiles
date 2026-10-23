@@ -8,7 +8,7 @@ blocks:
       - type: session
         style: plain
         foreground: red
-        template: "{{ .UserName }} "
+        template: "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}{{ else }}{{ .UserName }}{{ end }} "
 
       - type: path
         style: plain
