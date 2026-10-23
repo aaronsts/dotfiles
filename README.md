@@ -97,8 +97,7 @@ select its child model.
   (`mise/config.toml`; auto-switches on `cd` and reads `.nvmrc`/`.node-version`).
   `mise use -g <tool>` adds a tool to that file, so it's tracked here
 - **[zoxide](https://github.com/ajeetdsouza/zoxide)** — `z <partial>` to jump
-- **[lazygit](https://github.com/jesseduffield/lazygit)** git TUI and
-  **[delta](https://github.com/dandavison/delta)** as git's pager, also used for lazygit's diffs
+- **[lazygit](https://github.com/jesseduffield/lazygit)** git TUI (`lazygit/config.yml`)
 - Aliases in `zsh/aliases.zsh`; run `alias` to list them
 
 ## Terminal

@@ -5,7 +5,6 @@ brew "git"
 brew "zsh"
 brew "gh"          # GitHub CLI
 brew "lazygit"     # git TUI
-brew "git-delta"   # syntax-highlighted git diffs
 brew "antidote"    # zsh plugin manager
 brew "oh-my-posh"  # prompt
 brew "mise"        # runtime manager (node, global npm tools)
@@ -44,6 +43,7 @@ vscode "esbenp.prettier-vscode"
 vscode "evanlong.cursor-themes"
 vscode "lokalise.i18n-ally"
 vscode "ms-playwright.playwright"
+vscode "ms-vscode-remote.remote-ssh"
 vscode "orta.vscode-jest"
 vscode "ritwickdey.liveserver"
 vscode "tamasfe.even-better-toml"

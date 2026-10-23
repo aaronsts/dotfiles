@@ -1,4 +1,8 @@
-git:
-  diffRenderers:
-    - colorArg: always
-      command: delta --dark --paging=never
+gui:
+  # Hides the command log, tips and key hints; ? still lists every key
+  showCommandLog: false
+  showRandomTip: false
+  showBottomLine: false
+  theme:
+    # Magenta, like the git segment in the prompt
+    activeBorderColor: [magenta, bold]
