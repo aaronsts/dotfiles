@@ -13,3 +13,6 @@ macos-titlebar-style = transparent
 mouse-hide-while-typing = true
 
 keybind = cmd+shift+r=reload_config
+
+# Remote Macs lack the xterm-ghostty terminfo; install it on first ssh
+shell-integration-features = ssh-env,ssh-terminfo

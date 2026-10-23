@@ -9,3 +9,11 @@ Host ssh.bitbucket.org bitbucket.org
   AddKeysToAgent yes
   IdentityFile ~/.ssh/id_rsa
   IdentitiesOnly yes
+
+Host mini
+  Hostname Aarons-Mac-Mini.local
+  User rnsts
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+  ServerAliveInterval 30
