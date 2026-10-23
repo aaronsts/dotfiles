@@ -6,8 +6,10 @@
 echo "▶ Applying macOS preferences…"
 
 # Computer name (friendly name allows spaces; host/Bonjour names use hyphens)
-COMPUTER_NAME="A Wizards Laptop"
-HOST_NAME="A-Wizards-Laptop"
+CURRENT_NAME="$(scutil --get ComputerName)"
+read -rp "Computer name [$CURRENT_NAME]: " COMPUTER_NAME
+COMPUTER_NAME="${COMPUTER_NAME:-$CURRENT_NAME}"
+HOST_NAME="$(echo "$COMPUTER_NAME" | tr -cs 'A-Za-z0-9' '-' | sed 's/^-//;s/-$//')"
 sudo scutil --set ComputerName  "$COMPUTER_NAME"
 sudo scutil --set HostName      "$HOST_NAME"
 sudo scutil --set LocalHostName "$HOST_NAME"

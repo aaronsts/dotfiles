@@ -3,6 +3,10 @@
 
 [tools]
 node = "24"
+"pipx:auto-editor" = "latest"
+"pipx:mlx-whisper" = "latest"
+python = "3.12"
+uv = "latest"
 
 [settings]
 # Read .nvmrc / .node-version like fnm did (off by default in mise)
