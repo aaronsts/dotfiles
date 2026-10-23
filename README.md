@@ -58,6 +58,8 @@ dotfiles/
 │       └── test-triage/  -> ~/.claude/skills/test-triage/
 ├── mise/
 │   └── config.toml       -> ~/.config/mise/config.toml
+├── herdr/                # sockets, logs and sessions stay in ~/.config/herdr
+│   └── config.toml       -> ~/.config/herdr/config.toml
 ├── ssh/                  # host config only; keys stay in ~/.ssh
 │   └── config            -> ~/.ssh/config
 ├── vscode/               # extensions are vscode "…" lines in the Brewfile

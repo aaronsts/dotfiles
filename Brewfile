@@ -10,6 +10,7 @@ brew "mise"        # runtime manager (node, global npm tools)
 brew "zoxide"      # smarter cd
 brew "dockutil"    # manage Dock items from the CLI
 brew "doctl"       # DigitalOcean CLI
+brew "herdr"       # terminal workspace manager for AI agents
 
 # ── Apps + font ──────────────────────────────────────────────────────────────
 cask "ghostty"                        # terminal app

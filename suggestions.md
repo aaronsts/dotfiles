@@ -4,12 +4,11 @@
   - libpq — your zshrc already adds it to the PATH for psql.
   - doctl, the DigitalOcean CLI.
   - uv, which graphify needs.
-  - opencode and herdr.
 - Apps installed through Homebrew but not listed: claude, claude-code, discord, obsidian.
 - Apps you installed by hand that Homebrew can install (I checked each one exists): docker-desktop, google-chrome, spotify, chatgpt, proton-mail, microsoft-teams, stremio, affinity, citrix-workspace, recordly.
 - To stop this drifting again: brew bundle cleanup --file=~/code/dotfiles/Brewfile lists everything installed but not in the Brewfile, without removing anything. It would make a good alias.
 
-2. Claude Code config
+1. Claude Code config
 
 - You already track your Pi config the same way.
 - Worth linking: ~/.claude/CLAUDE.md, statusline.sh, hooks/ (including your block-env-reads.sh), output-styles/tldr.md and your own graphify skill.

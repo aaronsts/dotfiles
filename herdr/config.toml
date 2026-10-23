@@ -1,0 +1,22 @@
+onboarding = false
+
+[ui]
+status_indicators = "symbols"
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+# Ghostty-style splits, after the prefix (ctrl+s)
+[keys]
+prefix = "ctrl+s"
+split_vertical = "prefix+d"           # ghostty cmd+d
+split_horizontal = "prefix+shift+d"   # ghostty cmd+shift+d
+close_workspace = "prefix+shift+q"    # moved off prefix+shift+d
+close_pane = "prefix+w"             # ghostty cmd+w
+workspace_picker = ""               # freed prefix+w for close_pane
+zoom = "prefix+shift+enter"           # ghostty cmd+shift+enter
+focus_pane_up = "prefix+alt+up"       # ghostty cmd+alt+arrows
+focus_pane_down = "prefix+alt+down"
+focus_pane_left = "prefix+alt+left"
+focus_pane_right = "prefix+alt+right"
